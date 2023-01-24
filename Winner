@@ -1,0 +1,70 @@
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+local Window = Library.CreateLib("Winner", "DarkTheme")
+
+-- Main
+local Main = Window:NewTab("Main")
+local MainSection = Main:NewSection("Main")
+
+
+MainSection:NewButton("Inf levels/Inf Wins", "ButtonInfo", function()
+    while wait() do
+game:GetService("ReplicatedStorage").Wins.Wins10:FireServer()
+end
+end)
+
+
+
+MainSection:NewButton("Inf rebirths", "Inf leaderboard", function()
+    while wait() do
+workspace.Events.Rebirths:FireServer()
+end
+end)
+
+--Autofarm
+local Autofarm = Window:NewTab("Autofarm")
+local AutofarmSection = Autofarm:NewSection("Autofarm")
+
+
+
+
+--Player
+local Player = Window:NewTab("Player")
+local PlayerSection = Player:NewSection("Player")
+
+--Script
+PlayerSection:NewSlider("Speed", "Go zoom", 250, 16, function(s) -- 500 (MaxValue) | 0 (MinValue)
+    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = s
+end)
+
+
+PlayerSection:NewSlider("JumpPower", "Changes how fast you jump.", 250, 16, function(s) -- 500 (MaxValue) | 0 (MinValue)
+        game.Players.LocalPlayer.Character.Humanoid.JumpPower = s
+end)
+
+
+
+PlayerSection:NewButton("Infinite Yield", "Give you infinite yield script.", function()
+        loadstring(game:HttpGet(('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'),true))()
+end)
+
+
+
+PlayerSection:NewToggle("Infinite Jump", "Lets you infinitely jump", function()
+        local InfiniteJumpEnabled = true
+        game:GetService("UserInputService").JumpRequest:connect(function()
+            if InfiniteJumpEnabled then
+                game:GetService"Players".LocalPlayer.Character:FindFirstChildOfClass'Humanoid':ChangeState("Jumping")
+            end
+        end)
+    end)
+
+
+
+
+    -- Credits
+
+
+    local Credits = Window:NewTab("Credits")
+    local CreditsSection = Credits:NewSection("Credits")
+    
+        CreditsSection:NewLabel("Natfhkl")
